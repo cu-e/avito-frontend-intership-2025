@@ -1,0 +1,8 @@
+* {
+    margin: 0;
+    transition: 150ms;
+}
+
+.max-container {
+    max-width: 1000px;
+}
