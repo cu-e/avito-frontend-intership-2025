@@ -1,6 +1,9 @@
 services:
   backend:
     container_name: backend
+    profiles:
+      - all
+      - backend
     build:
       context: ./
       dockerfile: ./server/Dockerfile
@@ -9,6 +12,9 @@ services:
       - '3001'
   frontend:
     container_name: frontend
+    profiles:
+      - all
+      - frontend
     build:
       context: ./
       dockerfile: ./client/Dockerfile

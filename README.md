@@ -17,14 +17,36 @@
 - Docker с поддержкой compose, запускаемый с отдельного пользователя, в ином случае make запускать от root пользователя
 - Открытый 81 порт
 
-##### Запуск со сценариями Make
+#### Cо сценариями Make
+
+**Запуск**
 
 ```bash
-make prod
+make prod-up
 ```
 
-##### Запуск через docker compose
+**Стоп**
 
 ```bash
-docker compose up -d --production
+make prod-down
+```
+
+**Ре-билд**
+
+```bash
+make prod-build
+```
+
+#### Запуск через docker compose
+
+**Запуск**
+
+```bash
+docker compose --profile all -p avito-frontend-intership up -d
+```
+
+**Стоп**
+
+```bash
+docker compose -p avito-frontend-intership --profile all down
 ```
