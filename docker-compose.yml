@@ -1,0 +1,17 @@
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./
+      dockerfile: ./server/Dockerfile
+    restart: always
+    expose:
+      - '3001'
+  frontend:
+    container_name: frontend
+    build:
+      context: ./
+      dockerfile: ./client/Dockerfile
+    restart: always
+    ports:
+      - "81:80"
