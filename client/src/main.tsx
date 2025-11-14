@@ -6,11 +6,13 @@ import './styles.css';
 import App from './App.tsx';
 import { HttpClient } from './core/api/HttpClient.ts';
 import { ThemeProvider } from '@gravity-ui/uikit';
+import { AdsAPI } from './core/api/ads.ts';
 
 const http = new HttpClient('/api');
 
 export const api = {
   http,
+  AdsAPI: AdsAPI(http),
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
