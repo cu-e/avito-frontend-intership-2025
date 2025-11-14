@@ -7,12 +7,14 @@ import App from './App.tsx';
 import { HttpClient } from './core/api/HttpClient.ts';
 import { ThemeProvider } from '@gravity-ui/uikit';
 import { AdsAPI } from './core/api/ads.ts';
+import { statsAPI } from './core/api/statistic.ts';
 
 const http = new HttpClient('/api');
 
 export const api = {
   http,
-  AdsAPI: AdsAPI(http),
+  ads: AdsAPI(http),
+  stats: statsAPI(http),
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
