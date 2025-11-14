@@ -1,6 +1,6 @@
 export interface IAdsResponse {
   ads: IAd[];
-  pagination: Pagination;
+  pagination: IPagination;
 }
 
 export interface IAdCommentResponse {
@@ -54,7 +54,7 @@ export interface IModerationRecord {
 
 export type TModerationAction = 'approved' | 'rejected' | 'requestChanges';
 
-export interface Pagination {
+export interface IPagination {
   currentPage: number;
   totalPages: number;
   totalItems: number;
@@ -70,7 +70,7 @@ export type TAdsSortBy = 'createdAt' | 'price' | 'priority';
 
 export type TSortOrder = 'asc' | 'desc';
 
-export interface GetAdsParams {
+export interface IGetAdsParams {
   page?: number;
   limit?: number;
 
