@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from '@gravity-ui/uikit';
 import '@gravity-ui/uikit/styles/fonts.css';
 import '@gravity-ui/uikit/styles/styles.css';
 import './styles.css';
 import App from './App.tsx';
+import { HttpClient } from './core/api/HttpClient.ts';
+import { ThemeProvider } from '@gravity-ui/uikit';
+
+const http = new HttpClient('/api');
+
+export const api = {
+  http,
+};
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
