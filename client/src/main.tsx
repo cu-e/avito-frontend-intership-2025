@@ -6,7 +6,7 @@ import './styles.css';
 import App from './App.tsx';
 import { HttpClient } from './core/api/HttpClient.ts';
 import { ThemeProvider } from '@gravity-ui/uikit';
-import { AdsAPI } from './core/api/ads.ts';
+import { AdsAPI } from './core/api/ads/ads.ts';
 import { statsAPI } from './core/api/statistic.ts';
 import { ModeratorsAPI } from './core/api/moderators.ts';
 
