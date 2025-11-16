@@ -6,7 +6,7 @@ function MaxContainer(props: ComponentProps<'div'>) {
   return (
     <div
       {...rest}
-      style={{ width: '100%', maxWidth: '1000px', display: 'flex', padding: '0 20px', ...style }}
+      style={{ width: '100%', maxWidth: '1200px', display: 'flex', padding: '0 20px', ...style }}
     ></div>
   );
 }
