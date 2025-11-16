@@ -5,6 +5,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
+COPY server/package.json ./server/package.json
+
 RUN npm ci --include=dev
 
 COPY server ./server
