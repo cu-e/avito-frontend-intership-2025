@@ -7,9 +7,9 @@
     "server"
   ],
   "scripts": {
-    "dev": "dotenvx run -- concurrently -k -n CLIENT,SERVER -p \"[{name}]\" \"npm:dev -w client\" \"npm:dev -w server\"",
-    "build": "dotenvx run -- concurrently -k -n CLIENT,SERVER -p \"[{name}]\" \"npm:build -w client\" \"npm:build -w server\"",
-    "start": "dotenvx run -- npm run start -w server",
+    "dev": "concurrently -k -n CLIENT,SERVER -p \"[{name}]\" \"npm:dev -w client\" \"npm:dev -w server\"",
+    "build": "concurrently -k -n CLIENT,SERVER -p \"[{name}]\" \"npm:build -w client\" \"npm:build -w server\"",
+    "start": "npm run start -w server",
     "clean": "rimraf client/dist server/dist",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "npm run lint -- --fix",
@@ -36,8 +36,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^6.1.1",
-    "prettier": "^3.6.2",
-    "rimraf": "^5.0.5"
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "react-router-dom": "^7.9.3"

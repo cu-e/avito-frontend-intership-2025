@@ -6,7 +6,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Button, Card, Hotkey, Icon, Modal, Text, TextInput } from '@gravity-ui/uikit';
 import CharacteristicsTable from './CharacteristicsTable.tsx';
-import { ArrowRotateLeft, CheckShape, ChevronLeft, ChevronRight, Star, XmarkShape, } from '@gravity-ui/icons';
+import {
+  ArrowRotateLeft,
+  CheckShape,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  XmarkShape,
+} from '@gravity-ui/icons';
 import { useEffect, useState } from 'react';
 import { CategoryRadioWithOther } from '../../components/ui/CategoryRadioWithOther/CategoryRadioWithOther.tsx';
 import Lottie from 'lottie-react';
