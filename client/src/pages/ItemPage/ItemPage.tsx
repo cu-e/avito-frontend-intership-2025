@@ -1,10 +1,10 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import type { IAd } from '../../core/api/ads/ads.types.ts';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Button, Card, Icon, Modal, Text, TextInput } from '@gravity-ui/uikit';
+import { Button, Card, Hotkey, Icon, Modal, Text, TextInput } from '@gravity-ui/uikit';
 import CharacteristicsTable from './CharacteristicsTable.tsx';
 import { ArrowRotateLeft, CheckShape, ChevronLeft, ChevronRight, Star, XmarkShape, } from '@gravity-ui/icons';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import Lottie from 'lottie-react';
 import notFound from '../../assets/lottie/notFound.json';
 import { api } from '../../main.tsx';
 import { getLabel } from '../../core/utils/get-label.tsx';
+import { useHotkeys } from '../../core/hooks/useHotkeys.ts';
 
 function ItemPage() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function ItemPage() {
   const [comment, setComment] = useState<string>('');
   const [_isLoading, setIsLoading] = useState(!preState); //TODO: если время останется не забыть сделать загрузку
   const [error, setError] = useState(false);
+
   useEffect(() => {
     if (!id) {
       setError(true);
@@ -91,6 +93,15 @@ function ItemPage() {
     { value: '4', content: 'Проблемы с фото' },
     { value: '5', content: 'Подозрение на мошенничество' },
   ];
+  const navigate = useNavigate();
+
+  useHotkeys([
+    { key: 'a', handler: handleSubmitApprove },
+    { key: 'd', handler: () => setOpenRejectModal(true) },
+    { key: 's', handler: () => setOpenRequestChangesModal(true) },
+    { key: 'ArrowLeft', handler: () => navigate(`/item/${Number(id!) - 1}`) },
+    { key: 'ArrowRight', handler: () => navigate(`/item/${Number(id!) + 1}`) },
+  ]);
 
   const isEmpty = state?.moderationHistory && state?.moderationHistory.length === 0;
   return (
@@ -126,6 +137,14 @@ function ItemPage() {
                   <Icon data={ChevronRight} />
                 </Button>
               </Link>
+            </div>
+            <div>
+              <div>
+                <Hotkey value={'ArrowLeft'} /> - Прошлое
+              </div>
+              <div>
+                <Hotkey value={'ArrowRight'} /> - Следующее
+              </div>
             </div>
             <Text variant={'display-1'} style={{ fontWeight: '700', margin: '12px 0' }}>
               {state?.title}
@@ -203,7 +222,8 @@ function ItemPage() {
             >
               <Button
                 size={'xl'}
-                style={{ background: 'var(--g-color-base-positive-medium)', borderRadius: 12 }}
+                view={'outlined'}
+                style={{ color: 'var(--g-color-base-positive-heavy)' }}
                 width={'max'}
                 onClick={handleSubmitApprove}
               >
@@ -212,7 +232,8 @@ function ItemPage() {
               </Button>
               <Button
                 size={'xl'}
-                style={{ background: 'var(--g-color-base-danger-medium)', borderRadius: 12 }}
+                view={'outlined'}
+                style={{ color: 'var(--g-color-base-danger-heavy)' }}
                 width={'max'}
                 onClick={() => setOpenRejectModal(true)}
               >
@@ -221,13 +242,27 @@ function ItemPage() {
               </Button>
               <Button
                 size={'xl'}
-                style={{ background: 'var(--g-color-base-warning-medium)', borderRadius: 12 }}
+                view={'outlined'}
+                style={{ color: 'var(--g-color-base-warning-heavy)' }}
                 width={'max'}
                 onClick={() => setOpenRequestChangesModal(true)}
               >
                 <Icon data={ArrowRotateLeft} />
                 Доработка
               </Button>
+            </div>
+            <div
+              style={{ width: '100%', display: 'flex', justifyContent: 'space-between', gap: 8 }}
+            >
+              <div>
+                <Hotkey value={'A'} /> - Одобрить
+              </div>
+              <div>
+                <Hotkey value={'D'} /> - Отклонить
+              </div>
+              <div>
+                <Hotkey value={'S'} /> - На доработку
+              </div>
             </div>
             {state?.moderationHistory.map((item) => (
               <Card
