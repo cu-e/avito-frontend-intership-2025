@@ -1,9 +1,8 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import ListPage from './pages/ListPage/ListPage.tsx';
 import ItemPage from './pages/ItemPage/ItemPage.tsx';
-import StatsPage from './pages/StatsPage.tsx';
+import StatsPage from './pages/StatsPage/StatsPage.tsx';
 import MainTemplate from './components/templates/MainTemplate.tsx';
-import ProfilePage from './pages/ProfilePage.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -24,11 +23,6 @@ const routes = createBrowserRouter([
       {
         path: '/stats',
         element: <StatsPage />,
-      },
-      {
-        // вообще такого в инструкции нет, но вот данные даются, почему бы не сделать;)
-        path: '/profile',
-        element: <ProfilePage />,
       },
     ],
   },
