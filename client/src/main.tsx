@@ -11,6 +11,8 @@ import { ThemeProvider } from '@gravity-ui/uikit';
 import { AdsAPI } from './core/api/ads/ads.ts';
 import { statsAPI } from './core/api/statistic/statistic.ts';
 import { ModeratorsAPI } from './core/api/moderators/moderators.ts';
+import { store } from './core/store/store.ts';
+import { Provider } from 'react-redux';
 
 const http = new HttpClient('/api');
 
@@ -23,8 +25,10 @@ export const api = {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={'light'}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={'light'}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 );
