@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import ListPage from './pages/ListPage/ListPage.tsx';
-import ItemPage from './pages/ItemPage.tsx';
+import ItemPage from './pages/ItemPage/ItemPage.tsx';
 import StatsPage from './pages/StatsPage.tsx';
 import MainTemplate from './components/templates/MainTemplate.tsx';
 import ProfilePage from './pages/ProfilePage.tsx';
@@ -18,7 +18,7 @@ const routes = createBrowserRouter([
         element: <ListPage />,
       },
       {
-        path: '/item',
+        path: '/item/:id',
         element: <ItemPage />,
       },
       {

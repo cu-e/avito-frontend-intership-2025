@@ -17,6 +17,7 @@ import notFound from '../../assets/lottie/notFound.json';
 function ResultSection() {
   const dispatch = useAppDispatch();
   const [list, setList] = useState<IAdsResponse>();
+  const [viewItem, setViewItem] = useState<'row' | 'card'>('row');
 
   const filter = useAppSelector((state) => state.filter);
 
@@ -98,11 +99,11 @@ function ResultSection() {
           {list?.pagination.totalItems}
         </b>
       </Text>
-      <Button view={'flat'} selected={true}>
-        <Icon data={LayoutCellsLarge} />
-      </Button>
-      <Button view={'flat'}>
+      <Button view={'flat'} selected={viewItem === 'row'} onClick={() => setViewItem('row')}>
         <Icon data={LayoutRows} />
+      </Button>
+      <Button view={'flat'} selected={viewItem === 'card'} onClick={() => setViewItem('card')}>
+        <Icon data={LayoutCellsLarge} />
       </Button>
       <Select
         renderControl={({ triggerProps: { onClick, onKeyDown } }, { value }) => {
@@ -163,9 +164,21 @@ function ResultSection() {
         )}
 
         {!isEmpty && (
-          <div style={{ display: 'grid', gap: 10 }}>
+          <div
+            style={
+              viewItem === 'card'
+                ? {
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+                    gap: '16px',
+                    alignItems: 'stretch',
+                  }
+                : {}
+            }
+          >
+            {' '}
             {list?.ads.map((item) => (
-              <AdItem key={item.id} {...item} />
+              <AdItem key={item.id} {...item} view={viewItem} />
             ))}
           </div>
         )}

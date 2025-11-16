@@ -47,7 +47,7 @@ export interface IModerationRecord {
   moderatorName: string;
   action: TModerationAction;
 
-  reason: string;
+  reason: TModerationAction;
   comment: string;
 
   timestamp: string;
