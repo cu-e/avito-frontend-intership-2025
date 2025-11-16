@@ -51,7 +51,7 @@ docker compose --profile all -p avito-frontend-intership up -d
 docker compose -p avito-frontend-intership --profile all down
 ```
 
-#### В дев режиме
+#### В дев режиме (монорепа)
 
 - NodeJS v24+
 
