@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
-import ListPage from './pages/ListPage.tsx';
+import ListPage from './pages/ListPage/ListPage.tsx';
 import ItemPage from './pages/ItemPage.tsx';
 import StatsPage from './pages/StatsPage.tsx';
 import MainTemplate from './components/templates/MainTemplate.tsx';
