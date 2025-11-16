@@ -30,6 +30,7 @@ export interface IAd {
 }
 
 export type TAdStatus = 'pending' | 'approved' | 'rejected' | 'draft';
+
 export type TAdPriority = 'normal' | 'urgent';
 
 export interface ISeller {

@@ -8,7 +8,8 @@ import type {
 } from './ads.types.ts';
 
 export const AdsAPI = (http: HttpClient) => ({
-  getAll: (params: IGetAdsParams) => http.get<IAdsResponse>(`/ads${HttpClient.buildQuery(params)}`),
+  getAll: (params?: IGetAdsParams) =>
+    http.get<IAdsResponse>(`/ads${HttpClient.buildQuery(params)}`),
   getByID: (id: number) => http.get<IAd>(`/ads/${id}`),
   approve: (id: number, body: IComment) =>
     http.post<IAdCommentResponse>(`/ads/${id}/approve`, body),
