@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../core/store/store.ts';
 import { setPage, setSortBy, setSortOrder } from '../../core/store/Slices/filter.ts';
 import Lottie from 'lottie-react';
 import notFound from '../../assets/lottie/notFound.json';
+import { getLabel } from '../../core/utils/get-label.tsx';
 
 function ResultSection() {
   const dispatch = useAppDispatch();
@@ -41,9 +42,6 @@ function ResultSection() {
     { value: 'asc', content: 'АЯ 1-9' },
     { value: 'desc', content: 'ЯА 9-1' },
   ];
-  function getSortLabel(sortOptions: { value: string; content: string }[], value: string) {
-    return sortOptions.find((opt) => opt.value === value)?.content ?? value;
-  }
 
   // хочется кода без as ок)
   function isSortBy(value: string): value is TAdsSortBy | 'none' {
@@ -110,7 +108,7 @@ function ResultSection() {
           return (
             <Button view={'flat'} onClick={onClick} extraProps={{ onKeyDown }}>
               <Icon data={BarsAscendingAlignLeft} size={14} />
-              {getSortLabel(sortOptions, value?.join('') ?? '')}
+              {getLabel(sortOptions, value?.join('') ?? '')}
             </Button>
           );
         }}
@@ -127,7 +125,7 @@ function ResultSection() {
           return (
             <Button view={'flat'} onClick={onClick} extraProps={{ onKeyDown }}>
               <Icon data={ArrowUpArrowDown} size={14} />
-              {getSortLabel(sortOrderOptions, value?.join('') ?? '')}
+              {getLabel(sortOrderOptions, value?.join('') ?? '')}
             </Button>
           );
         }}

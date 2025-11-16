@@ -6,19 +6,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Button, Card, Icon, Modal, Text, TextInput } from '@gravity-ui/uikit';
 import CharacteristicsTable from './CharacteristicsTable.tsx';
-import {
-  ArrowRotateLeft,
-  CheckShape,
-  ChevronLeft,
-  ChevronRight,
-  Star,
-  XmarkShape,
-} from '@gravity-ui/icons';
+import { ArrowRotateLeft, CheckShape, ChevronLeft, ChevronRight, Star, XmarkShape, } from '@gravity-ui/icons';
 import { useEffect, useState } from 'react';
 import { CategoryRadioWithOther } from '../../components/ui/CategoryRadioWithOther/CategoryRadioWithOther.tsx';
 import Lottie from 'lottie-react';
 import notFound from '../../assets/lottie/notFound.json';
 import { api } from '../../main.tsx';
+import { getLabel } from '../../core/utils/get-label.tsx';
 
 function ItemPage() {
   const location = useLocation();
@@ -62,7 +56,10 @@ function ItemPage() {
   };
 
   const handleSubmitReject = async () => {
-    const data = await api.ads.reject(state?.id!, { reason: reason, comment: comment });
+    const data = await api.ads.reject(state?.id!, {
+      reason: getLabel(moderationReasons, reason),
+      comment: comment,
+    });
     setState(data.ad);
     setReason('');
     setComment('');
@@ -70,7 +67,10 @@ function ItemPage() {
   };
 
   const handleSubmitRequestChanges = async () => {
-    const data = await api.ads.requestChanges(state?.id!, { reason: reason, comment: comment });
+    const data = await api.ads.requestChanges(state?.id!, {
+      reason: getLabel(moderationReasons, reason),
+      comment: comment,
+    });
     setState(data.ad);
     setReason('');
     setComment('');
