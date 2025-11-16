@@ -1,18 +1,12 @@
 import { Button, Select, Text, TextInput } from '@gravity-ui/uikit';
-import {
-  resetFilters,
-  setCategoryID,
-  setMaxPrice,
-  setMinPrice,
-  setStatus,
-} from '../../core/store/Slices/filter';
+import { resetFilters, setCategoryID, setMaxPrice, setMinPrice, setStatus, } from '../../core/store/Slices/filter';
 import { useAppDispatch, useAppSelector } from '../../core/store/store.ts';
 import { useState } from 'react';
 import type { TAdStatus } from '../../core/api/ads/ads.types.ts';
 import { MultiToggleButtons } from '../../components/ui/MultiToggleButtons/MultiToggleButtons.tsx';
 
 function FilterAside() {
-  const STATUS_OPTIONS: TAdStatus[] = ['pending', 'approved', 'rejected'];
+  const STATUS_OPTIONS: TAdStatus[] = ['pending', 'approved', 'rejected', 'draft'];
   const [selectedStatus, setSelectedStatus] = useState<TAdStatus[]>([]);
 
   const dispatch = useAppDispatch();
