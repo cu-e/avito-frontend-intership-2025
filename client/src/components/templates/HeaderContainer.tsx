@@ -25,15 +25,9 @@ function HeaderContainer() {
             Объявления
           </Button>
         </Link>
-
         <Link to={'/stats'}>
-          <Button view={'flat'} style={{ color: 'inherit' }}>
-            Аналитика
-          </Button>
-        </Link>
-        <Link to={'/profile'}>
           <Button view={'action'} t style={{ color: 'var(--g-color-text-inverted-primary)' }}>
-            Профиль
+            Статистика и профиль
           </Button>
         </Link>
       </MaxContainer>
